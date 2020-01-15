@@ -11,20 +11,28 @@
 	<key>CFBundleIdentifier</key>
 	<string>Scriptfactory.PathConverter</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5</string>
+	<string>1.5.1b</string>
 	<key>CFBundleVersion</key>
-	<string>1.5</string>
+	<string>1.5,1b</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>copyright 2002-2010, Tetsuro KURITA</string>
+	<string>copyright 2002-2020, Kurita Tetsuro</string>
 	<key>WindowState</key>
 	<dict>
+		<key>bundleDividerCollapsed</key>
+		<false/>
+		<key>bundlePositionOfDivider</key>
+		<real>436</real>
+		<key>dividerCollapsed</key>
+		<true/>
+		<key>eventLogLevel</key>
+		<integer>2</integer>
 		<key>name</key>
 		<string>ScriptWindowState</string>
 		<key>positionOfDivider</key>
-		<real>574</real>
+		<real>0.0</real>
 		<key>savedFrame</key>
-		<string>52 213 735 653 0 0 1440 878 </string>
-		<key>selectedTabView</key>
+		<string>52 212 735 653 0 0 1440 877 </string>
+		<key>selectedTab</key>
 		<string>result</string>
 	</dict>
 </dict>
