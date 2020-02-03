@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <!-- InstanceBegin template="../../../../../_Templates/helpbook-page.dwt" -->
+
+    <head>
+      <meta name="keywords" content="PathConverter, 相対パス, 絶対パス, absolute path, relative path, POSIX path, HFS path, POSIX パス, HFS パス" />
+      <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+      <title>Synopsis</title>
+      <!-- #BeginHeadLocked "" -->
+        <link href="../../ja.lproj/01_synopsis/assets/helpbook-default.css" type="text/css" rel="stylesheet" media="all" />
+        <link href="../../ja.lproj/01_synopsis/assets/helpbook-navibar.css" type="text/css" rel="stylesheet" media="all" />
+        <script type="text/javascript" src="../../ja.lproj/01_synopsis/assets/navibar-jump.js"></script>
+      <!-- #EndHeadLocked -->
+      <link href="../../ja.lproj/01_synopsis/assets/AppleScript-2016.css" rel="stylesheet" type="text/css" media="all" />
+      <csimport user="../../../_Components/sample-code.html" occur="24">
+        <link href="../../ja.lproj/01_synopsis/assets/AppleScript-2016.css" rel="stylesheet" type="text/css" media="all" />
+      </csimport>
+    </head>
+
+    <body>
+      <!-- InstanceBeginEditable name="navi-bar" --><div id="navi-bar"><span class="navibar-item"><a href="../index.html">PathConverter Help</a></span><span class="navibar-item">Synopsis</span><select onchange="navibarJump(this)"><option value="">§</option>
+    <option value="#what">What ?</option>
+    <option value="#usage">Usage</option></select></div>
+<div class="prev-next-item"><a href="../02_reference/index.html"><span class="navibar-next">PathConverter Reference</span></a></div><!-- InstanceEndEditable -->
+      <div id="contents">
+        <!-- InstanceBeginEditable name="Body" -->
+          <h1>PathConverter</h1>
+          <h2><a id="what" name="what"></a>What ?</h2>
+          
+          <p>PathConverter is an AppleScript module to convert a path between a relative path and an absolute path each other.</p>
+          <p>An absolute path means a file path which describes complete location from a top level of a disk as follows.</p>
+          
+          <p class="terminalCommand">Macintosh HD:Users:hello:document1.text</p>
+          
+          <p>To talk about a relative path, consider one more absolute path.</p>
+          
+          <p class="terminalCommand">Macintosh HD:Users:hey:document2.text</p>
+          
+          <p>When the origin of the path is 'document1.text', the location of 'document2.text' can be expressed relatively as follows.</p>
+          
+          <p class="terminalCommand">::hey:document2.text</p>
+          
+          <p>This is a relative path.</p>
+          
+          <p>Paths in above examples are HFS styles. PathConverter can also deal with POSIX styles as follows.</p>
+          
+          <div class="terminalCommand">
+            <p>/Users/hello/document1.text</p>
+            <p>../hey/document2.text</p>
+          </div>
+          <h2><a id="usage" name="usage"></a>Usage</h2>
+          
+          <p>The standard usage of PathConverter is :</p>
+          <ol>
+            <li>At first, make an instance of PathConverter with <a href="../02_reference/pages/make_with.html">make_with</a> passing a base path into the argument. The style (HFS or POSIX) of path which the instance can deal with is determined with the one of the base path.</li>
+            <li>Convert paths between a relative path and an absolute path using <a href="../02_reference/pages/relative_path.html">relative_path</a> and <a href="../02_reference/pages/absolute_path.html">absolute_path</a> handles of the instance.</li>
+          </ol>
+          <csobj csref="../../../_Components/sample-code.html" occur="24" t="Component">
+            <div class="sourceCode" style="">
+              <div class="scriptButton" style="float:right;" >
+                <input type="button" value="Open this script : sample1" onclick="document.location = this.src" src="applescript://com.apple.scripteditor?action=new&amp;script=use%20PathConverter%20:%20script%20%22PathConverter%22%0D%0D--%20HFS%20Path%0Dset%20pathconv%20to%20PathConverter%27s%20make_with(%22Macintosh%20HD:Users:tkurita:Documents:hey.txt%22)%0Dlog%20(relative_path%20of%20pathconv%20for%20%22Macintosh%20HD:Users:tkurita:articles:hello.txt%22)%0D(*%20::articles:hello.txt%20*)%0D%0Dlog%20(absolute_path%20of%20pathconv%20for%20%22::hello.txt%22)%0D(*%20Macintosh%20HD:Users:tkurita:hello.txt%20*)%0D%0D--%20POSIX%20path%0Dset%20pathconv%20to%20PathConverter%27s%20make_with(%22/Users/tkurita/Documents/hey.txt%22)%0Dlog%20(relative_path%20of%20pathconv%20for%20%22/Users/tkurita/articles/hello.txt%22)%0D(*%20../articles/hello.txt%20*)%0D%0Dlog%20(relative_path%20of%20pathconv%20for%20%22/Users/tkurita/Documents/%22)%0D(*./*)%0D%0Dlog%20(absolute_path%20of%20pathconv%20for%20%22../articles/hello.txt%22)%0D(*%20/Users/tkurita/articles/hello.txt%20*)%0D" /></div>
+              <div>
+                <span class="langKeyword">use</span> <span class="userDefine">PathConverter</span><span class="normal"> : </span><span class="className">script</span><span class="normal"> &quot;PathConverter&quot;</span></div>
+              <br />
+              <div>
+                <span class="comment">-- HFS Path</span></div>
+              <div>
+                <span class="langKeyword">set</span> <span class="userDefine">pathconv</span> <span class="langKeyword">to</span> <span class="userDefine">PathConverter's</span> <span class="userDefine">make_with</span><span class="normal">(&quot;Macintosh HD:Users:tkurita:Documents:hey.txt&quot;)</span></div>
+              <div>
+                <span class="commandName">log</span><span class="normal"> (</span><span class="userDefine">relative_path</span> <span class="langKeyword">of</span> <span class="userDefine">pathconv</span> <span class="appKeyword">for</span><span class="normal"> &quot;Macintosh HD:Users:tkurita:articles:hello.txt&quot;)</span></div>
+              <div>
+                <span class="comment">(* ::articles:hello.txt *)</span></div>
+              <br />
+              <div>
+                <span class="commandName">log</span><span class="normal"> (</span><span class="userDefine">absolute_path</span> <span class="langKeyword">of</span> <span class="userDefine">pathconv</span> <span class="appKeyword">for</span><span class="normal"> &quot;::hello.txt&quot;)</span></div>
+              <div>
+                <span class="comment">(* Macintosh HD:Users:tkurita:hello.txt *)</span></div>
+              <br />
+              <div>
+                <span class="comment">-- POSIX path</span></div>
+              <div>
+                <span class="langKeyword">set</span> <span class="userDefine">pathconv</span> <span class="langKeyword">to</span> <span class="userDefine">PathConverter's</span> <span class="userDefine">make_with</span><span class="normal">(&quot;/Users/tkurita/Documents/hey.txt&quot;)</span></div>
+              <div>
+                <span class="commandName">log</span><span class="normal"> (</span><span class="userDefine">relative_path</span> <span class="langKeyword">of</span> <span class="userDefine">pathconv</span> <span class="appKeyword">for</span><span class="normal"> &quot;/Users/tkurita/articles/hello.txt&quot;)</span></div>
+              <div>
+                <span class="comment">(* ../articles/hello.txt *)</span></div>
+              <br />
+              <div>
+                <span class="commandName">log</span><span class="normal"> (</span><span class="userDefine">relative_path</span> <span class="langKeyword">of</span> <span class="userDefine">pathconv</span> <span class="appKeyword">for</span><span class="normal"> &quot;/Users/tkurita/Documents/&quot;)</span></div>
+              <div>
+                <span class="comment">(*./*)</span></div>
+              <br />
+              <div>
+                <span class="commandName">log</span><span class="normal"> (</span><span class="userDefine">absolute_path</span> <span class="langKeyword">of</span> <span class="userDefine">pathconv</span> <span class="appKeyword">for</span><span class="normal"> &quot;../articles/hello.txt&quot;)</span></div>
+              <div>
+                <span class="comment">(* /Users/tkurita/articles/hello.txt *)</span></div>
+            </div>
+          </csobj>
+          <p>An extra feature of PathConverter is converting a POSIX path into a HFS path with only parsing paths. Mainly it is supposed conversion of a relative path between POSIX style and HFS style.</p>
+          <p>In the case of absolute paths, conversion each other is easy using 'POSIX file' and 'POSIX path of' commands. On the other hand, direct conversion of relative paths is not straightforward. <a href="../02_reference/pages/hfs_from_posix.html">hfs_from_posix</a> handler can help to solve such problems.</p>
+          
+          <div class="sourceCode" style="">
+            <div class="scriptButton" style="float:right;" >
+              <input type="button" value="Open this script : sample2" onclick="document.location = this.src" src="applescript://com.apple.scripteditor?action=new&amp;script=use%20PathConverter%20:%20script%20%22PathConverter%22%0D%0Dtell%20PathConverter%0D%09log%20(hfs_from_posix(%22../articles/hello.txt%22))%0D%09(*%20::articles:hello.txt%20*)%0Dend%20tell" /></div>
+            <div>
+              <span class="langKeyword">use</span> <span class="userDefine">PathConverter</span><span class="normal"> : </span><span class="className">script</span><span class="normal"> &quot;PathConverter&quot;</span></div>
+            <br />
+            <div>
+              <span class="langKeyword">tell</span> <span class="userDefine">PathConverter</span></div>
+            <div style="text-indent:4ex;">
+              <span class="commandName">log</span><span class="normal"> (</span><span class="userDefine">hfs_from_posix</span><span class="normal">(&quot;../articles/hello.txt&quot;))</span></div>
+            <div style="text-indent:4ex;">
+              <span class="comment">(* ::articles:hello.txt *)</span></div>
+            <div>
+              <span class="langKeyword">end</span> <span class="langKeyword">tell</span></div>
+          </div>
+        <!-- InstanceEndEditable --></div>
+      <!-- InstanceBeginEditable name="prev-next-item" --><div class="prev-next-item"><a href="../02_reference/index.html"><span class="navibar-next">PathConverter Reference</span></a></div><!-- InstanceEndEditable -->
+      <div class="footer">
+        <p>This page was last built on <csobj format="MedDate" h="10" region="0" t="DateTime" w="69">Mon, Feb 3, 2020</csobj> ; <csobj format="LongTime" h="10" region="0" t="DateTime" w="45">1:59:56 PM</csobj> . Thanks for checking it out!</p>
+      </div>
+    </body>
+
+  <!-- InstanceEnd -->
+
+</html>
